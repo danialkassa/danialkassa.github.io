@@ -1,107 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Welcome to My website</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My website</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            padding-top: 64px; /* Space for fixed header */
+        }
+        /* Custom styling to match Bootstrap's look where needed */
+        .header-bg {
+            background-color: #fff;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 header-bg shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-      <h1 class="logo me-auto"><a href="index.html">Daniel Kassa</a></h1>
+            <h1 class="text-xl font-bold text-gray-800 tracking-wider">
+                <a href="#">Daniel Kassa</a>
+            </h1>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="education.html">Back</a></li>
-          <li><a href="expertise.html">Next</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+            <nav id="navbar" class="hidden lg:flex space-x-8">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Home</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Back</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Next</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile nav toggle is removed for simplicity in this single-file context -->
 
-    </div>
-  </header><!-- End Header -->
-
-  <main id="main" data-aos="fade-in">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="container">
-        <h2>My Journey</h2>
-        <p>I had a tough time in my Educational Journey. But the way I handled it made me the person I am Today.</p>
-      </div>
-    </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Courses Section ======= -->
-    <section id="about" class="about">
-   
-
-        <div class="row">
-         
-            <h3>Summary of My Personal Story:</h3>
-            <p class="fst-italic">
-              My journey as a Mathematician and an Electronics and Computer engineer began with a childhood fascination for both technology and aesthetics. I wanted to create physical products that seamlessly integrated technology and design, products that not only functioned flawlessly but also appealed to users on an aesthetic and emotional level.
-              I pursued a dual degree in Electronics and Computer Engineering, immersing myself in courses that ranged from human-centered design to electronics and hardware prototyping. I'm excited to embark on new projects, collaborate with like-minded individuals, and continue pushing the boundaries of what's possible in the field of electronics and Computer engineering.
-            </p>
-       
         </div>
-      </div>
-    </section><!-- End Courses Section -->
+    </header><!-- End Header -->
 
-  </main>
+    <main id="main">
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container d-md-flex py-4">
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; 2023 <strong><span>Daniel</span></strong>. All Rights Reserved
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="bg-gray-100 py-8 shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">My Journey</h2>
+                <p class="text-gray-600">I had a tough time in my Educational Journey. But the way I handled it made me the person I am Today.</p>
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Courses Section (Content Area) ======= -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <!-- Centering container: max-w-4xl limits the width, and mx-auto centers it -->
+            <div class="max-w-4xl mx-auto"> 
+                
+                <h3 class="text-3xl font-bold text-gray-800 mb-6">Summary of My Personal Story:</h3>
+                
+                <!-- The content itself is now constrained and centered -->
+                <p class="italic text-gray-600 leading-relaxed text-lg">
+                    My journey as a Mathematician and an Industrial Design, Electronics and Computer engineer began with a childhood fascination for both technology and aesthetics. I wanted to create physical products that seamlessly integrated technology and design, products that not only functioned flawlessly but also appealed to users on an aesthetic and emotional level.
+                </p>
+                <p class="italic text-gray-600 leading-relaxed text-lg mt-4">
+                    I pursued a dual degree in Electronics and Computer Engineering, immersing myself in courses that ranged from human-centered design to electronics and hardware prototyping. I'm excited to embark on new projects, collaborate with like-minded individuals, and continue pushing the boundaries of what's possible in the field of electronics and Computer engineering.
+                </p>
+                
+            </div>
+        </section><!-- End Courses Section -->
+
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+            <div class="text-center md:text-left">
+                <div class="text-sm">
+                    &copy; 2024 <strong class="font-semibold"><span>Daniel</span></strong>. All Rights Reserved
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    </footer><!-- End Footer -->
 
 </body>
 
