@@ -6,13 +6,72 @@
     <title>Daniel Kassa - Education</title>
     <!-- Load Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light gray background */
-            padding-top: 64px; /* Space for fixed header */
-        }
-    </style>
+   <style>
+  /* Modern Minimal Video Hero */
+  .showcase {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  .showcase video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(55%) blur(0px); /* soft cinematic tone */
+    transition: filter 1s ease;
+  }
+
+  /* Subtle hover clarity on desktop */
+  @media (min-width: 769px) {
+    .showcase:hover video {
+      filter: brightness(70%);
+    }
+  }
+
+  .showcase .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1.8s ease forwards;
+  }
+
+  .showcase .text h1 {
+    font-weight: 600;
+    font-size: 2.7rem;
+    letter-spacing: 1.5px;
+    margin: 0;
+    animation: slideUp 1.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translate(-50%, -45%); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+  }
+
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .showcase {
+      height: 60vh;
+    }
+    .showcase .text h1 {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -137,3 +196,4 @@
 </body>
 
 </html>
+
