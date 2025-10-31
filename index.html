@@ -279,61 +279,76 @@
 
   <script src="assets/js/main.js"></script>
 
-  <script>
-    // Mobile navigation toggle
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const navbar = document.querySelector('#navbar ul');
-      const overlay = document.querySelector('.navbar-overlay');
-      
-      if (mobileNavToggle) {
-        mobileNavToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          navbar.classList.toggle('show');
-          overlay.classList.toggle('active');
-          
-          // Toggle icon between hamburger and X
-          const icon = this.querySelector('i');
-          if (navbar.classList.contains('show')) {
-            icon.classList.remove('bi-list');
-            icon.classList.add('bi-x');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-          } else {
-            icon.classList.remove('bi-x');
-            icon.classList.add('bi-list');
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
+<script>
+  // Mobile navigation toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar ul');
+    const overlay = document.querySelector('.navbar-overlay');
+    
+    function closeMobileMenu() {
+      if (navbar.classList.contains('show')) {
+        navbar.classList.remove('show');
+        overlay.classList.remove('active');
+        const icon = mobileNavToggle.querySelector('i');
+        icon.classList.remove('bi-x');
+        icon.classList.add('bi-list');
+        document.body.style.overflow = ''; // Restore scrolling
+        
+        // Add a small delay to ensure menu is fully closed before navigation
+        return new Promise(resolve => setTimeout(resolve, 100));
       }
-      
-      // Close mobile menu when clicking on overlay
-      if (overlay) {
-        overlay.addEventListener('click', function() {
-          navbar.classList.remove('show');
-          overlay.classList.remove('active');
-          const icon = mobileNavToggle.querySelector('i');
+      return Promise.resolve();
+    }
+    
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        navbar.classList.toggle('show');
+        overlay.classList.toggle('active');
+        
+        // Toggle icon between hamburger and X
+        const icon = this.querySelector('i');
+        if (navbar.classList.contains('show')) {
+          icon.classList.remove('bi-list');
+          icon.classList.add('bi-x');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        } else {
           icon.classList.remove('bi-x');
           icon.classList.add('bi-list');
           document.body.style.overflow = ''; // Restore scrolling
-        });
-      }
-      
-      // Close mobile menu when clicking on a link
-      const navLinks = document.querySelectorAll('#navbar ul li a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (navbar.classList.contains('show')) {
-            navbar.classList.remove('show');
-            overlay.classList.remove('active');
-            const icon = mobileNavToggle.querySelector('i');
-            icon.classList.remove('bi-x');
-            icon.classList.add('bi-list');
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
+        }
+      });
+    }
+    
+    // Close mobile menu when clicking on overlay
+    if (overlay) {
+      overlay.addEventListener('click', function() {
+        closeMobileMenu();
+      });
+    }
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('#navbar ul li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Don't prevent default behavior - allow normal navigation
+        // Just close the menu first with a small delay
+        if (navbar.classList.contains('show')) {
+          e.preventDefault(); // Temporarily prevent navigation
+          const originalHref = this.href;
+          
+          closeMobileMenu().then(() => {
+            // After menu is closed, navigate to the link
+            window.location.href = originalHref;
+          });
+        }
+        // If menu is not open, allow normal navigation (no else needed)
       });
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
+
