@@ -81,20 +81,29 @@
       to { transform: translate(-50%, -50%); opacity: 1; }
     }
 
-    @media (max-width: 768px) {
-      .showcase {
-        height: 60vh;
-      }
-      .showcase .text h1 {
-        font-size: 1.6rem;
-        letter-spacing: 1px;
-      }
+    /* ✅ Navbar Styles */
+    #navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
     }
 
-    /* ✅ Navbar Visibility Fix */
+    #navbar ul li {
+      position: relative;
+    }
+
     #navbar ul li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
       color: #222 !important;
       font-weight: 500;
+      white-space: nowrap;
+      transition: 0.3s;
+      text-decoration: none;
     }
 
     #navbar ul li a:hover,
@@ -102,12 +111,61 @@
       color: rgb(95, 207, 128) !important;
     }
 
-    @media (max-width: 992px) {
-      #navbar {
-        background: rgba(255, 255, 255, 0.92) !important;
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+      color: #222;
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+      transition: 0.5s;
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      #navbar ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(8px);
         border-radius: 6px;
-        padding: 12px;
+        padding: 10px 0;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      #navbar ul.show {
+        display: flex !important;
+      }
+
+      #navbar ul li {
+        width: 100%;
+      }
+
+      #navbar ul li a {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      #navbar ul li:last-child a {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .showcase {
+        height: 60vh;
+      }
+      .showcase .text h1 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
       }
     }
   </style>
@@ -119,6 +177,10 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto"><a href="index.html" style="color: rgb(95, 207, 128); background-color: rgb(255, 255, 255);">Daniel Kassa</a></h1>
+      
+      <!-- Mobile nav toggle button -->
+      <i class="bi bi-list mobile-nav-toggle"></i>
+      
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="https://danialkassa.github.io/myproject/#/">Projects</a></li>
@@ -130,7 +192,6 @@
         </ul>
       </nav>
     </div>
-
   </header>
 
   <section class="showcase">
@@ -141,7 +202,7 @@
   </section>
 
   <main id="main">
-    <!-- Your About Section (unchanged) -->
+    <!-- Your About Section -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -190,6 +251,44 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <script src="assets/js/main.js"></script>
+
+  <script>
+    // Mobile navigation toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navbar = document.querySelector('#navbar ul');
+      
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          navbar.classList.toggle('show');
+          
+          // Toggle icon between hamburger and X
+          const icon = this.querySelector('i');
+          if (navbar.classList.contains('show')) {
+            icon.classList.remove('bi-list');
+            icon.classList.add('bi-x');
+          } else {
+            icon.classList.remove('bi-x');
+            icon.classList.add('bi-list');
+          }
+        });
+      }
+      
+      // Close mobile menu when clicking on a link
+      const navLinks = document.querySelectorAll('#navbar ul li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navbar.classList.contains('show')) {
+            navbar.classList.remove('show');
+            const icon = mobileNavToggle.querySelector('i');
+            icon.classList.remove('bi-x');
+            icon.classList.add('bi-list');
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
